@@ -22,6 +22,15 @@ def get_forecast( city='Pittsburgh' ):
     * Return the period that is labeled as "Tonight"
     '''
 
+    geolocator = Nominatim(user_agent='ModernProgramming')
+    location = geolocator.geocode(city)
+
+    # use the latitude and longitude to get the weather forecast
+    URL = f'https://api.weather.gov/points/{location.latitude},{location.longitude }'
+    response = requests.get(URL)
+
+    json.loads(response).get('latitude')
+    
     raise NotImplementedError()
 
 def main():
