@@ -3,6 +3,12 @@ from geopy.geocoders import Nominatim
 import requests
 import pandas as pd
 
+def CityNotFoundError():
+  print("Latitude and Longitude for this city does not exist")
+
+def search_for_tonight(forecast):
+    return [element for element in forecast if element['name'] == 'Tonight']
+
 def get_forecast( city='Pittsburgh' ):
     '''
     Returns the nightly's forecast for a given city.
@@ -26,7 +32,7 @@ def get_forecast( city='Pittsburgh' ):
     try: 
         location = geolocator.geocode(city)
     except: 
-        raise CityNotFoundError
+        raise CityNotFoundError()
     
     if location==None | location.latitude==None | location.longitude==None:
       return CityNotFoundError()
