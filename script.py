@@ -22,15 +22,30 @@ def get_forecast( city='Pittsburgh' ):
     * Return the period that is labeled as "Tonight"
     '''
 
-    geolocator = Nominatim(user_agent='ModernProgramming')
-    location = geolocator.geocode(city)
+    geolocator = Nominatim(user_agent='shivammi')
+    try: 
+        location = geolocator.geocode(city)
+    except: 
+        raise CityNotFoundError
+    
+    if location==None | location.latitude==None | location.longitude==None:
+      return CityNotFoundError()
 
     # use the latitude and longitude to get the weather forecast
     URL = f'https://api.weather.gov/points/{location.latitude},{location.longitude }'
     response = requests.get(URL)
+    response_json = response.json()
 
-    json.loads(response).get('latitude')
-    
+    ll_url = response_json['id']
+    ll_response_json = requests.get(ll_url).json()
+
+    forecast_url = ll_response_json['properties']['forecast']
+    forecast_response_json = requests.get(forecast_url).json()
+
+    forecast = forecast_response_json['properties']['periods']
+    forecast_tonight = search_for_tonight(forecast)
+
+    return {'startTime':forecast_tonight[0]['startTime'], 'endTime':forecast_tonight[0]['endTime'], 'detailedForecast':forecast_tonight[0]['detailedForecast']}
     raise NotImplementedError()
 
 def main():
@@ -49,8 +64,8 @@ def main():
 
     #sort repositories
     file = open("README.md", "w")
-    file.write('![Status](https://github.com/icaoberg/python-get-forecast/actions/workflows/build.yml/badge.svg)\n')
-    file.write('![Status](https://github.com/icaoberg/python-get-forecast/actions/workflows/pretty.yml/badge.svg)\n')
+    file.write('![Status](https://github.com/smishr97/python-get-forecast/actions/workflows/build.yml/badge.svg)\n')
+    file.write('![Status](https://github.com/smishr97/python-get-forecast/actions/workflows/pretty.yml/badge.svg)\n')
     file.write('# Pittsburgh Nightly Forecast\n\n')
     
     file.write(df.to_markdown(tablefmt='github'))
