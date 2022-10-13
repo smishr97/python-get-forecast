@@ -3,11 +3,13 @@ from geopy.geocoders import Nominatim
 import requests
 import pandas as pd
 
-def CityNotFoundError():
+def CityNotFoundError( ):
   print("Latitude and Longitude for this city does not exist")
 
-def search_for_tonight(forecast):
+
+def search_for_tonight( forecast ):
     return [element for element in forecast if element['name'] == 'Tonight']
+
 
 def get_forecast( city='Pittsburgh' ):
     '''
@@ -50,8 +52,9 @@ def get_forecast( city='Pittsburgh' ):
     startTime, endTime, detailedForecast = forecast_tonight[0]['startTime'], forecast_tonight[0]['endTime'], forecast_tonight[0]['detailedForecast']
 
     return {'startTime':startTime, 'endTime':endTime, 'detailedForecast':detailedForecast}
-    raise NotImplementedError
+    raise NotImplementedError()
 
+ 
 def main():
     period = get_forecast()
 
