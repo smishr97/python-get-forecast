@@ -43,10 +43,11 @@ def get_forecast( city='Pittsburgh' ):
     response = response.json()
     
     forecast_url = response['properties']['forecast']
-    response_2 = requests.get(forecast_url)
-    response_2 = response_2.json()
-    forecast = response_2['properties']['periods'][0]
-    startTime, endTime, detailedForecast = forecast['startTime'], forecast['endTime'], forecast['detailedForecast']
+    response_2 = requests.get(forecast_url).json()
+
+    forecast = response_2['properties']['periods']
+    forecast_tonight = search_for_tonight(forecast)
+    startTime, endTime, detailedForecast = forecast_tonight['startTime'], forecast_tonight['endTime'], forecast_tonight['detailedForecast']
 
     return {'startTime':startTime, 'endTime':endTime, 'detailedForecast':detailedForecast}
     raise NotImplementedError
