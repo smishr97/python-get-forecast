@@ -34,25 +34,22 @@ def get_forecast( city='Pittsburgh' ):
     except: 
         raise CityNotFoundError()
     
-    if location==None | location.latitude==None | location.longitude==None:
+    if location==None:
       return CityNotFoundError()
 
     # use the latitude and longitude to get the weather forecast
     URL = f'https://api.weather.gov/points/{location.latitude},{location.longitude }'
     response = requests.get(URL)
     response_json = response.json()
+    
+    forecast_url = response['properties']['forecast']
+    response_2 = requests.get(forecast_url)
+    response_2 = response_2.json()
+    forecast = response_2['properties']['periods'][0]
+    startTime, endTime, detailedForecast = forecast['startTime'], forecast['endTime'], forecast['detailedForecast']
 
-    ll_url = response_json['id']
-    ll_response_json = requests.get(ll_url).json()
-
-    forecast_url = ll_response_json['properties']['forecast']
-    forecast_response_json = requests.get(forecast_url).json()
-
-    forecast = forecast_response_json['properties']['periods']
-    forecast_tonight = search_for_tonight(forecast)
-
-    return {'startTime':forecast_tonight[0]['startTime'], 'endTime':forecast_tonight[0]['endTime'], 'detailedForecast':forecast_tonight[0]['detailedForecast']}
-    raise NotImplementedError()
+    return {'startTime':startTime, 'endTime':endTime, 'detailedForecast':detailedForecast}
+    raise NotImplementedError
 
 def main():
     period = get_forecast()
