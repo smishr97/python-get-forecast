@@ -22,7 +22,7 @@ def get_forecast( city='Pittsburgh' ):
     * Return the period that is labeled as "Tonight"
     '''
 
-    geolocator = Nominatim(user_agent='shivammi')
+    geolocator = Nominatim(user_agent='Shivam Mishra')
     try: 
         location = geolocator.geocode(city)
     except: 
