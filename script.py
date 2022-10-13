@@ -47,7 +47,7 @@ def get_forecast( city='Pittsburgh' ):
 
     forecast = response_2['properties']['periods']
     forecast_tonight = search_for_tonight(forecast)
-    startTime, endTime, detailedForecast = forecast_tonight['startTime'], forecast_tonight['endTime'], forecast_tonight['detailedForecast']
+    startTime, endTime, detailedForecast = forecast_tonight[0]['startTime'], forecast_tonight[0]['endTime'], forecast_tonight[0]['detailedForecast']
 
     return {'startTime':startTime, 'endTime':endTime, 'detailedForecast':detailedForecast}
     raise NotImplementedError
