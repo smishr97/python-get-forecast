@@ -23,6 +23,7 @@
 | 16 | 2022-10-27T20:00:00-04:00 | 2022-10-28T06:00:00-04:00 | Partly cloudy, with a low around 37. Northeast wind around 5 mph.                                                                                                                   |
 | 17 | 2022-10-28T20:00:00-04:00 | 2022-10-29T06:00:00-04:00 | Mostly clear, with a low around 37. East wind around 5 mph.                                                                                                                         |
 | 18 | 2022-10-29T20:00:00-04:00 | 2022-10-30T06:00:00-04:00 | Mostly clear, with a low around 37. East wind around 5 mph.                                                                                                                         |
+| 19 | 2022-10-30T20:00:00-04:00 | 2022-10-31T06:00:00-04:00 | A chance of rain showers. Partly cloudy, with a low around 49. Southeast wind around 3 mph. Chance of precipitation is 40%.                                                         |
 
 ---
 Copyright © 2022 Pittsburgh Supercomputing Center. All Rights Reserved.
