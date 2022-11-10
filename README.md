@@ -31,6 +31,7 @@
 | 24 | 2022-11-06T18:00:00-05:00 | 2022-11-07T06:00:00-05:00 | Partly cloudy, with a low around 51. Southwest wind around 6 mph.                                                                                                                   |
 | 25 | 2022-11-07T19:00:00-05:00 | 2022-11-08T06:00:00-05:00 | Partly cloudy, with a low around 37. North wind 2 to 6 mph.                                                                                                                         |
 | 26 | 2022-11-08T19:00:00-05:00 | 2022-11-09T06:00:00-05:00 | Mostly clear, with a low around 36. Northeast wind around 6 mph.                                                                                                                    |
+| 27 | 2022-11-09T19:00:00-05:00 | 2022-11-10T06:00:00-05:00 | Clear, with a low around 39. Southeast wind around 6 mph.                                                                                                                           |
 
 ---
 Copyright © 2022 Pittsburgh Supercomputing Center. All Rights Reserved.
